@@ -5,7 +5,7 @@ using RestWithASPNET10.Services.PersonServicesImpl;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.AddSerilogLogging();
 builder.Services.AddControllers();
 
 builder.Services.AddDatabaseConfiguraion(builder.Configuration);

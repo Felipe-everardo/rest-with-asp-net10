@@ -15,7 +15,7 @@ public class PersonServicesImpl : IPersonService
         return _context.Persons.ToList();
     }
 
-    public Person FindById(int id)
+    public Person FindById(long id)
     {
         return _context.Persons.Find(id);
     }
