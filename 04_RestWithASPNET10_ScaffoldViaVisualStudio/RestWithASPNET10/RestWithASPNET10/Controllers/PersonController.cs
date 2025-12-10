@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RestWithASPNET10.Model;
 using RestWithASPNET10.Services;
 
@@ -9,10 +8,10 @@ namespace RestWithASPNET10.Controllers;
 [ApiController]
 public class PersonController : ControllerBase
 {
-    private IPersonService _personService;
+    private IPersonServices _personService;
     private readonly ILogger<PersonController> _logger;
 
-    public PersonController(IPersonService personService,
+    public PersonController(IPersonServices personService,
         ILogger<PersonController> logger)
     {
         _personService = personService;

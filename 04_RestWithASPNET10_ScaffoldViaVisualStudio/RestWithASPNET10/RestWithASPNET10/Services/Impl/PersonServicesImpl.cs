@@ -1,48 +1,26 @@
 ﻿using RestWithASPNET10.Model;
 using RestWithASPNET10.Model.Context;
+using RestWithASPNET10.Repositories;
 
 namespace RestWithASPNET10.Services.PersonServicesImpl;
 
-public class PersonServicesImpl : IPersonService
+// (Implementação): Esta classe é apenas um agente de passagem de mensagens.
+// Ela recebe a chamada do Controller e a repassa imediatamente para o repositório
+// (_repository.Create(person)).
+
+public class PersonServicesImpl : IPersonServices
 {
-    private MSSQLContext _context;
-    public PersonServicesImpl(MSSQLContext context)
-    {
-        _context = context;
-    }
-    public List<Person> FindAll()
-    {
-        return _context.Persons.ToList();
-    }
+    private IPersonRepository _repository;
+    
+    public PersonServicesImpl(IPersonRepository repository) => _repository = repository;
+ 
+    public List<Person> FindAll() =>  _repository.FindAll();
 
-    public Person FindById(long id)
-    {
-        return _context.Persons.Find(id);
-    }
+    public Person FindById(long id) => _repository.FindById(id);
+  
+    public Person Create(Person person) => _repository.Create(person);
 
-    public Person Create(Person person)
-    {
-        _context.Add(person);
-        _context.SaveChanges();
-        return person;
-    }
+    public Person Update(Person person) => _repository.Update(person);
 
-    public Person Update(Person person)
-    {
-        var existingPerson = _context.Persons.Find(person.Id);
-        if (existingPerson == null) return null;
-
-        _context.Entry(existingPerson).CurrentValues.SetValues(person);
-        _context.SaveChanges();
-        return existingPerson;
-    }
-
-    public void Delete(long id)
-    {
-        var existingPerson = _context.Persons
-            .Find(id);
-        if (existingPerson == null) return;
-        _context.Remove(existingPerson);
-        _context.SaveChanges();
-    }
+    public void Delete(long id) => _repository.Delete(id);
 }

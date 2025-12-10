@@ -1,8 +1,11 @@
 ﻿using RestWithASPNET10.Model;
+using System.Diagnostics.Contracts;
 
-namespace RestWithASPNET10.Services;
+namespace RestWithASPNET10.Repositories;
 
-public interface IPersonService
+// Define o contrato de acesso aos dados.O Serviço depende deste contrato.
+
+public interface IPersonRepository
 {
     Person Create(Person person);
     Person FindById(long id);
