@@ -8,9 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.AddSerilogLogging();
+
 builder.Services.AddControllers();
 
 builder.Services.AddDatabaseConfiguraion(builder.Configuration);
+builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
+
 builder.Services.AddScoped<IPersonServices, PersonServicesImpl>();
 builder.Services.AddScoped<IPersonRepository, PersonRepositoryImpl>();
 
