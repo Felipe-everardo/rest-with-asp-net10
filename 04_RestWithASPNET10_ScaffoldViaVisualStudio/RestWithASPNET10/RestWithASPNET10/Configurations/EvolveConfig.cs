@@ -19,7 +19,7 @@ public static class EvolveConfig
             if (string.IsNullOrEmpty(connectionString))
             {
                 throw new ArgumentNullException(
-                    "Connection string 'MSSQLServerSQLConnectionString' not found.");
+                   "Connection string 'MSSQLServerSQLConnectionString' not found.");
             }
 
             try

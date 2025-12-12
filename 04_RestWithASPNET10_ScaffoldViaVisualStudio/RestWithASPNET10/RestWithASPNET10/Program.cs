@@ -3,6 +3,7 @@ using RestWithASPNET10.Repositories;
 using RestWithASPNET10.Repositories.Impl;
 using RestWithASPNET10.Services;
 using RestWithASPNET10.Services.PersonServicesImpl;
+using RestWithASPNET10.Services.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environme
 
 builder.Services.AddScoped<IPersonServices, PersonServicesImpl>();
 builder.Services.AddScoped<IPersonRepository, PersonRepositoryImpl>();
+builder.Services.AddScoped<IBookServices, BookServicesImpl>();
+builder.Services.AddScoped<IBookRepository, BookRepositoryImpl>();
 
 var app = builder.Build();
 
