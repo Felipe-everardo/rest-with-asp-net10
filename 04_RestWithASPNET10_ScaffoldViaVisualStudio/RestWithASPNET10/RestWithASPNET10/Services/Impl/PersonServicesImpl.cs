@@ -10,9 +10,9 @@ namespace RestWithASPNET10.Services.PersonServicesImpl;
 
 public class PersonServicesImpl : IPersonServices
 {
-    private IPersonRepository _repository;
+    private IRepository<Person> _repository;
     
-    public PersonServicesImpl(IPersonRepository repository) => _repository = repository;
+    public PersonServicesImpl(IRepository<Person> repository) => _repository = repository;
  
     public List<Person> FindAll() =>  _repository.FindAll();
 
