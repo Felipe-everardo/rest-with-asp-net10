@@ -5,9 +5,9 @@ namespace RestWithASPNET10.Services.Impl;
 
 public class BookServicesImpl : IBookServices
 {
-    private IBookRepository _repository;
+    private IRepository<Book> _repository;
 
-    public BookServicesImpl(IBookRepository repository) => _repository = repository;
+    public BookServicesImpl(IRepository<Book> repository) => _repository = repository;
 
     public List<Book> FindAll() => _repository.FindAll();
     public Book FindById(long id) => _repository.FindById(id);
